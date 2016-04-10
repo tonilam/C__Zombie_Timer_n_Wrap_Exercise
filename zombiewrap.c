@@ -22,7 +22,6 @@ void setup_zombie( Game * game ) {
 }
 
 bool update_zombie( Game * game ) {
-	wait_char();
 	if (game->over || !timer_expired(game->timer)) {			
 		return false;
 	} else {
