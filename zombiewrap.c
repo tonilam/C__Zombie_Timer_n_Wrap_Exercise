@@ -29,7 +29,7 @@ bool update_zombie( Game * game ) {
 		int new_x = 0;
 
 		old_x = round(sprite_x(game->zombie));
-		sprite_move(game->zombie, sprite_dx(game->zombie), 0);
+		sprite_step(game->zombie);
 		new_x = round(sprite_x(game->zombie));
 
 		if (new_x >= screen_width()) {
@@ -41,12 +41,8 @@ bool update_zombie( Game * game ) {
 		if (game->laps >= 6) {
 			game->over = true;
 		}
-		if (new_x == old_x) {
-			return false;
-		}
+		return new_x != old_x;
 	}
-	
-	return true;
 }
 
 void display_zombie( Game * game ) {
